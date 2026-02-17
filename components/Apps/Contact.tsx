@@ -138,7 +138,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                         <p className="text-xs text-cyber-text font-mono uppercase">Email</p>
-                        <p className="text-white font-medium">beniysa.issam@gmail.com</p>
+                        <p className="text-white font-medium">contact@issambeniysa.site</p>
                     </div>
                     <Copy className="ml-auto text-gray-600 hover:text-white transition-colors" size={16} />
                 </div>
