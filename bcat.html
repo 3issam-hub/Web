@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Bounty Checklist & Tools</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: ALL;
+            position: relative;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2, h3 {
+            color: #555;
+        }
+
+        .checkbox-container {
+            margin: 10px 0;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <u><h1>Bug Bounty Checklist</h1></u>
+        
+        <h2>Recon on Wildcard Domain</h2>
+        <div class="checkbox-container"><input type="checkbox" id="1"  >Run amass</div>
+        <div class="checkbox-container"><input type="checkbox" id="2" >Run subfinder</div>
+        <div class="checkbox-container"><input type="checkbox" id="3">Run assetfinder</div>
+        <div class="checkbox-container"><input type="checkbox" id="4">Run dnsgen</div>
+        <div class="checkbox-container"><input type="checkbox" id="5">Run massdns</div>
+        <div class="checkbox-container"><input type="checkbox" id="6">Use httprobe</div>
+        <div class="checkbox-container"><input type="checkbox" id="7">Run aquatone (screenshot for alive host)</div>
+
+        <h2>Single Domain</h2>
+        <h3>Scanning</h3>
+        <div class="checkbox-container"><input type="checkbox" id="8">Nmap scan</div>
+        <div class="checkbox-container"><input type="checkbox" id="9">Burp crawler</div>
+        <div class="checkbox-container"><input type="checkbox" id="10">ffuf (directory and file fuzzing)</div>
+        <div class="checkbox-container"><input type="checkbox" id="11">hakrawler/gau/paramspider</div>
+        <div class="checkbox-container"><input type="checkbox" id="12">Linkfinder</div>
+        <div class="checkbox-container"><input type="checkbox" id="13">Url with Android application</div>
+
+        <h3>Manual Checking</h3>
+        <div class="checkbox-container"><input type="checkbox" id="14">Shodan</div>
+        <div class="checkbox-container"><input type="checkbox" id="15">Censys</div>
+        <div class="checkbox-container"><input type="checkbox" id="16">Google dorks</div>
+        <div class="checkbox-container"><input type="checkbox" id="17">Pastebin</div>
+        <div class="checkbox-container"><input type="checkbox" id="18">Github</div>
+        <div class="checkbox-container"><input type="checkbox" id="19">OSINT</div>
+
+        <h3>Information Gathering</h3>
+        <div class="checkbox-container"><input type="checkbox" id="20">Manually explore the site</div>
+        <div class="checkbox-container"><input type="checkbox" id="21">Spider/crawl for missed or hidden content</div>
+        <div class="checkbox-container"><input type="checkbox" id="22">Check for files that expose content, such as robots.txt, sitemap.xml, .DS_Store</div>
+        <div class="checkbox-container"><input type="checkbox" id="23">Check the caches of major search engines for publicly accessible sites</div>
+        <div class="checkbox-container"><input type="checkbox" id="24">Check for differences in content based on User Agent (eg, Mobile sites, access as a Search engine Crawler)</div>
+        <div class="checkbox-container"><input type="checkbox" id="25">Perform Web Application Fingerprinting</div>
+        <div class="checkbox-container"><input type="checkbox" id="26">Identify technologies used</div>
+        <div class="checkbox-container"><input type="checkbox" id="27">Identify user roles</div>
+        <div class="checkbox-container"><input type="checkbox" id="28">Identify application entry points</div>
+        <div class="checkbox-container"><input type="checkbox" id="29">Identify client-side code</div>
+        <div class="checkbox-container"><input type="checkbox" id="30">Identify multiple versions/channels (e.g. web, mobile web, mobile app, web services)</div>
+        <div class="checkbox-container"><input type="checkbox" id="31">Identify co-hosted and related applications</div>
+        <div class="checkbox-container"><input type="checkbox" id="32">Identify all hostnames and ports</div>
+        <div class="checkbox-container"><input type="checkbox" id="33">Identify third-party hosted content</div>
+        <div class="checkbox-container"><input type="checkbox" id="34">Identify Debug parameters</div>
+
+        <h2>Configuration Management</h2>
+        <div class="checkbox-container"><input type="checkbox" id="35">Check for commonly used application and administrative URLs</div>
+        <div class="checkbox-container"><input type="checkbox" id="36">Check for old, backup and unreferenced files</div>
+        <div class="checkbox-container"><input type="checkbox" id="37">Check HTTP methods supported and Cross Site Tracing (XST)</div>
+        <div class="checkbox-container"><input type="checkbox" id="38">Test file extensions handling</div>
+        <div class="checkbox-container"><input type="checkbox" id="39">Test for security HTTP headers (e.g. CSP, X-Frame-Options, HSTS)</div>
+        <div class="checkbox-container"><input type="checkbox" id="40">Test for policies (e.g. Flash, Silverlight, robots)</div>
+        <div class="checkbox-container"><input type="checkbox" id="41">Test for non-production data in live environment, and vice-versa</div>
+        <div class="checkbox-container"><input type="checkbox" id="42">Check for sensitive data in client-side code (e.g. API keys, credentials)</div>
+
+        <h2>Secure Transmission</h2>
+        <div class="checkbox-container"><input type="checkbox" id="43">Check SSL Version, Algorithms, Key length</div>
+        <div class="checkbox-container"><input type="checkbox" id="44">Check for Digital Certificate Validity (Duration, Signature and CN)</div>
+        <div class="checkbox-container"><input type="checkbox" id="45">Check credentials only delivered over HTTPS</div>
+        <div class="checkbox-container"><input type="checkbox" id="46">Check that the login form is delivered over HTTPS</div>
+        <div class="checkbox-container"><input type="checkbox" id="47">Check session tokens only delivered over HTTPS</div>
+        <div class="checkbox-container"><input type="checkbox" id="48">Check if HTTP Strict Transport Security (HSTS) in use</div>
+
+        <h2>Authentication</h2>
+        <div class="checkbox-container"><input type="checkbox" id="49">Test for user enumeration</div>
+        <div class="checkbox-container"><input type="checkbox" id="50">Test for authentication bypass</div>
+        <div class="checkbox-container"><input type="checkbox" id="51">Test for bruteforce protection</div>
+        <div class="checkbox-container"><input type="checkbox" id="52">Test password quality rules</div>
+        <div class="checkbox-container"><input type="checkbox" id="53">Test remember me functionality</div>
+        <div class="checkbox-container"><input type="checkbox" id="54">Test for autocomplete on password forms/input</div>
+        <div class="checkbox-container"><input type="checkbox" id="55">Test password reset and/or recovery</div>
+        <div class="checkbox-container"><input type="checkbox" id="56">Test password change process</div>
+        <div class="checkbox-container"><input type="checkbox" id="57">Test CAPTCHA</div>
+        <div class="checkbox-container"><input type="checkbox" id="58">Test multi factor authentication</div>
+        <div class="checkbox-container"><input type="checkbox" id="59">Test for logout functionality presence</div>
+        <div class="checkbox-container"><input type="checkbox" id="60">Test for cache management on HTTP (eg Pragma, Expires, Max-age)</div>
+        <div class="checkbox-container"><input type="checkbox" id="61">Test for default logins</div>
+        <div class="checkbox-container"><input type="checkbox" id="62">Test for user-accessible authentication history</div>
+        <div class="checkbox-container"><input type="checkbox" id="63">Test for out-of channel notification of account lockouts and successful password changes</div>
+        <div class="checkbox-container"><input type="checkbox" id="64">Test for consistent authentication across applications with shared authentication schema / SSO</div>
+
+        <h2>Session Management</h2>
+        <div class="checkbox-container"><input type="checkbox" id="65">Establish how session management is handled in the application (eg, tokens in cookies, token in URL)</div>
+        <div class="checkbox-container"><input type="checkbox" id="66">Check session tokens for cookie flags (httpOnly and secure)</div>
+        <div class="checkbox-container"><input type="checkbox" id="67">Check session cookie scope (path and domain)</div>
+        <div class="checkbox-container"><input type="checkbox" id="68">Check session cookie duration (expires and max-age)</div>
+        <div class="checkbox-container"><input type="checkbox" id="69">Check session termination after a maximum lifetime</div>
+        <div class="checkbox-container"><input type="checkbox" id="70">Check session termination after relative timeout</div>
+        <div class="checkbox-container"><input type="checkbox" id="71">Check session termination after logout</div>
+        <div class="checkbox-container"><input type="checkbox" id="72">Test to see if users can have multiple simultaneous sessions</div>
+        <div class="checkbox-container"><input type="checkbox" id="73">Test session cookies for randomness</div>
+        <div class="checkbox-container"><input type="checkbox" id="74">Confirm that new session tokens are issued on login, role change and logout</div>
+        <div class="checkbox-container"><input type="checkbox" id="75">Test for consistent session management across applications with shared session management</div>
+        <div class="checkbox-container"><input type="checkbox" id="76">Test for session puzzling</div>
+        <div class="checkbox-container"><input type="checkbox" id="77">Test for CSRF and clickjacking</div>
+        
+        <h2>Authorization</h2>
+        <div class="checkbox-container"><input type="checkbox" id="78">Test for path traversal</div>
+        <div class="checkbox-container"><input type="checkbox" id="79">Test for bypassing authorization schema</div>
+        <div class="checkbox-container"><input type="checkbox" id="80">Test for vertical Access control problems (a.k.a. Privilege Escalation)</div>
+        <div class="checkbox-container"><input type="checkbox" id="81">Test for horizontal Access control problems (between two users at the same privilege level)</div>
+        <div class="checkbox-container"><input type="checkbox" id="82">Test for missing authorization</div>
+
+        <h2>Data Validation</h2>
+        <div class="checkbox-container"><input type="checkbox" id="83">Test for Reflected Cross Site Scripting</div>
+        <div class="checkbox-container"><input type="checkbox" id="84">Test for Stored Cross Site Scripting</div>
+        <div class="checkbox-container"><input type="checkbox" id="85">Test for DOM based Cross Site Scripting</div>
+        <div class="checkbox-container"><input type="checkbox" id="86">Test for Cross Site Flashing</div>
+        <div class="checkbox-container"><input type="checkbox" id="87">Test for HTML Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="88">Test for SQL Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="89">Test for LDAP Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="90">Test for ORM Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="91">Test for XML Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="92">Test for XXE Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="93">Test for SSI Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="94">Test for XPath Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="95">Test for XQuery Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="96">Test for IMAP/SMTP Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="97">Test for Code Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="98">Test for Expression Language Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="99">Test for Command Injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="100">Test for Overflow (Stack, Heap and Integer)</div>
+        <div class="checkbox-container"><input type="checkbox" id="101">Test for Format String</div>
+        <div class="checkbox-container"><input type="checkbox" id="102">Test for incubated vulnerabilities</div>
+        <div class="checkbox-container"><input type="checkbox" id="103">Test for HTTP Splitting/Smuggling</div>
+        <div class="checkbox-container"><input type="checkbox" id="104">Test for HTTP Verb Tampering</div>
+        <div class="checkbox-container"><input type="checkbox" id="105">Test for Open Redirection</div>
+        <div class="checkbox-container"><input type="checkbox" id="106">Test for Local File Inclusion</div>
+        <div class="checkbox-container"><input type="checkbox" id="107">Test for Remote File Inclusion</div>
+        <div class="checkbox-container"><input type="checkbox" id="108">Compare client-side and server-side validation rules</div>
+        <div class="checkbox-container"><input type="checkbox" id="109">Test for NoSQL injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="110">Test for HTTP parameter pollution</div>
+        <div class="checkbox-container"><input type="checkbox" id="111">Test for auto-binding</div>
+        <div class="checkbox-container"><input type="checkbox" id="112">Test for Mass Assignment</div>
+        <div class="checkbox-container"><input type="checkbox" id="113">Test for NULL/Invalid Session Cookie</div>
+
+        <h2>Denial of Service</h2>
+        <div class="checkbox-container"><input type="checkbox" id="114">Test for anti-automation</div>
+        <div class="checkbox-container"><input type="checkbox" id="115">Test for account lockout</div>
+        <div class="checkbox-container"><input type="checkbox" id="115">Test for HTTP protocol DoS</div>
+        <div class="checkbox-container"><input type="checkbox" id="116">Test for SQL wildcard DoS</div>
+
+        <h2>Business Logic</h2>
+        <div class="checkbox-container"><input type="checkbox" id="117">Test for feature misuse</div>
+        <div class="checkbox-container"><input type="checkbox" id="119">Test for lack of non-repudiation</div>
+        <div class="checkbox-container"><input type="checkbox" id="120">Test for trust relationships</div>
+        <div class="checkbox-container"><input type="checkbox" id="121">Test for integrity of data</div>
+        <div class="checkbox-container"><input type="checkbox" id="122">Test segregation of duties</div>
+
+        <h2>Cryptography</h2>
+        <div class="checkbox-container"><input type="checkbox" id="123">Check if data which should be encrypted is not</div>
+        <div class="checkbox-container"><input type="checkbox" id="124">Check for wrong algorithms usage depending on context</div>
+        <div class="checkbox-container"><input type="checkbox" id="125">Check for weak algorithms usage</div>
+        <div class="checkbox-container"><input type="checkbox" id="126">Check for proper use of salting</div>
+        <div class="checkbox-container"><input type="checkbox" id="127">Check for randomness functions</div>
+
+        <h2>Risky Functionality - File Uploads</h2>
+        <div class="checkbox-container"><input type="checkbox" id="128">Test that acceptable file types are whitelisted</div>
+        <div class="checkbox-container"><input type="checkbox" id="129">Test that file size limits, upload frequency and total file counts are defined and are enforced</div>
+        <div class="checkbox-container"><input type="checkbox" id="130">Test that file contents match the defined file type</div>
+        <div class="checkbox-container"><input type="checkbox" id="131">Test that all file uploads have Anti-Virus scanning in-place.</div>
+        <div class="checkbox-container"><input type="checkbox" id="132">Test that unsafe filenames are sanitised</div>
+        <div class="checkbox-container"><input type="checkbox" id="133">Test that uploaded files are not directly accessible within the web root</div>
+        <div class="checkbox-container"><input type="checkbox" id="134">Test that uploaded files are not served on the same hostname/port</div>
+        <div class="checkbox-container"><input type="checkbox" id="135">Test that files and other media are integrated with the authentication and authorisation schemas</div>
+
+        <h2>Risky Functionality - Card Payment</h2>
+        <div class="checkbox-container"><input type="checkbox" id="136">Test for known vulnerabilities and configuration issues on Web Server and Web Application</div>
+        <div class="checkbox-container"><input type="checkbox" id="136">Test for default or guessable password</div>
+        <div class="checkbox-container"><input type="checkbox" id="137">Test for non-production data in live environment, and vice-versa</div>
+        <div class="checkbox-container"><input type="checkbox" id="138">Test for Injection vulnerabilities</div>
+        <div class="checkbox-container"><input type="checkbox" id="139">Test for Buffer Overflows</div>
+        <div class="checkbox-container"><input type="checkbox" id="140">Test for Insecure Cryptographic Storage</div>
+        <div class="checkbox-container"><input type="checkbox" id="141">Test for Insufficient Transport Layer Protection</div>
+        <div class="checkbox-container"><input type="checkbox" id="142">Test for Improper Error Handling</div>
+        <div class="checkbox-container"><input type="checkbox" id="143">Test for all vulnerabilities with a CVSS v2 score > 4.0</div>
+        <div class="checkbox-container"><input type="checkbox" id="144">Test for Authentication and Authorization issues</div>
+        <div class="checkbox-container"><input type="checkbox" id="145">Test for CSRF</div>
+
+        <h2>HTML 5</h2>
+        <div class="checkbox-container"><input type="checkbox" id="146">Test Web Messaging</div>
+        <div class="checkbox-container"><input type="checkbox" id="147">Test for Web Storage SQL injection</div>
+        <div class="checkbox-container"><input type="checkbox" id="148">Check CORS implementation</div>
+        <div class="checkbox-container"><input type="checkbox" id="149">Check Offline Web Application</div>
+        <div class="button-container">
+            <button id="uncheck-all">Uncheck All</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+        // Restore checkbox state
+        document
+          .querySelectorAll('input[type="checkbox"]')
+          .forEach((checkbox) => {
+            const checked = localStorage.getItem(checkbox.id) === "true";
+            checkbox.checked = checked;
+          });
+
+        // Save checkbox state
+        document
+          .querySelectorAll('input[type="checkbox"]')
+          .forEach((checkbox) => {
+            checkbox.addEventListener("change", () => {
+              localStorage.setItem(checkbox.id, checkbox.checked);
+            });
+          });
+
+        // Uncheck all checkboxes
+        document.getElementById("uncheck-all").addEventListener("click", () => {
+          document
+            .querySelectorAll('input[type="checkbox"]')
+            .forEach((checkbox) => {
+              checkbox.checked = false;
+              localStorage.setItem(checkbox.id, false);
+            });
+        });
+      });
+        // By_issam_beniysa
+    </script>
+</body>
+</html>
