@@ -110,7 +110,7 @@ const App: React.FC = () => {
               <a href="https://linktr.ee/issam.beniysa" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full" aria-label="Linktree">
                 <Link size={20} />
               </a>
-              <a href="mailto:beniysa.issam@gmail.com" className="text-gray-500 hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full" aria-label="Email">
+              <a href="mailto:contact@issambeniysa.site" className="text-gray-500 hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full" aria-label="Email">
                 <Mail size={20} />
               </a>
             </div>
